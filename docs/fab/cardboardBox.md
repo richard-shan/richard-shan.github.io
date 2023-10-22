@@ -1,4 +1,4 @@
-## Cardboard Storage Box
+# Cardboard Storage Box
 
 Today, I cut and assembled a cardboard box to use for storage in the future. 
 
