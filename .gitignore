@@ -1,9 +1,1 @@
-.gitignore.txt
-.md
-!README.md
-.jpg
-.JPG
-.png
-.PNG
-.mov
-.MOV
+/docs/
