@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Macro - Richard Shan</title>
+    <title>Macro Maker - Richard Shan</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Macro";
+        var mkdocs_page_name = "Macro Maker";
         var mkdocs_page_input_path = "coding\\macro.md";
         var mkdocs_page_url = null;
       </script>
@@ -61,7 +61,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Macro</li>
+      <li class="breadcrumb-item active">Macro Maker</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -70,19 +70,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="macro-maker-very-much-wip">Macro Maker (very much wip)</h2>
-<p>The Macro project was my final project for Java Data Structures. The goal of the project was to allow the user to record all inputs into a computer, including things such as mouse movements, dragging, mouse clicks, key presses, scrolling, and delays. Those actions should then be stored or logged. The actions can then be replayed exactly as they were recorded.</p>
+                <h1 id="macro-maker">Macro Maker</h1>
+<h3 id="description">Description</h3>
+<p>The Macro project was my final project for Java Data Structures (H) in 10th grade. The final product would allow the user to record all inputs into a computer, including things such as mouse movements, dragging, mouse clicks, key presses, scrolling, and delays. Those actions should then be stored and logged. The actions can then be replayed by exactly as they were recorded.</p>
 <p><center>
-<img src="../pics/macroPlanningChart.jpg" alt="macroMaker_flow_chart" width="450"/></p>
-<p><br> <br></p>
+<br> </p>
+<p></center></p>
+<h3 id="download">Download</h3>
+<p><center></p>
 <h5 id="the-jar-executable-can-be-downloaded-here">The jar executable can be downloaded <a href="../macro.jar" download="Macro Maker.jar">here</a>.</h5>
-<p><br> <br></p>
+<p><br></p>
 <h5 id="instructions-for-use">Instructions for Use</h5>
 <p>Start Recording Keystrokes: CTRL + SHIFT + R</p>
 <p>Stop Recording Keystrokes and Save: CTRL + SHIFT + S</p>
 <p>Replay Saved Keystroke Sequence: CTRL + SHIFT + 1</p>
-<p><br> 
+<p><br> <br>
 </center></p>
+<h3 id="initial-planning-chart">Initial Planning Chart</h3>
+<p><center></p>
+<p><img src="../pics/macroPlanningChart.jpg" alt="macroMaker_flow_chart" width="450"/>
+</center></p>
+<h5 id="key-elements">Key Elements</h5>
+<ul>
+<li>Action interface implemented by all the action/event classes: ClickPress, ClickRelease, KeyPress, KeyRelease, MouseMove, etc.</li>
+<li>GlobalScreen singleton object to act as the single reference point for recording actions</li>
+<li>Mouse and Keyboard Adapters to listen for actions within the global screen</li>
+<li>Stack to store the recorded actions</li>
+<li>Custom MouseCoordinatesConverter component that will convert true x,y mouse coordinates to relative x, y mouse coordinates scaled to each computer's unique screen size</li>
+</ul>
 <h5 id="known-bugs">Known Bugs</h5>
 <ul>
 <li>Issues with delay between actions</li>
