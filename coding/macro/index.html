@@ -93,7 +93,7 @@
 <h5 id="key-elements">Key Elements</h5>
 <ul>
 <li>Action interface implemented by all the action/event classes: ClickPress, ClickRelease, KeyPress, KeyRelease, MouseMove, etc.<ul>
-<li>The action classes are command patterns, allowing the encapsulation of a request as an object.</li>
+<li>Every action class follows the command archetype, allowing the encapsulation of a request as an object.</li>
 </ul>
 </li>
 <li>GlobalScreen singleton object to act as the single reference point for recording actions</li>
@@ -101,6 +101,7 @@
 <li>Stack to store the recorded actions</li>
 <li>Custom MouseCoordinatesConverter component that will convert true x,y mouse coordinates to relative x, y mouse coordinates scaled to each computer's unique screen size</li>
 <li>State machine handling action transitions and entries when a key/mouse is pressed</li>
+<li>Hashtable inside SwingKeyAdapter to convert NativeKeyEvent KeyLocations into location integers parsable and usable by KeyEvent</li>
 </ul>
 <h5 id="known-bugs">Known Bugs</h5>
 <ul>
