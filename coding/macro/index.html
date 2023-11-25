@@ -97,11 +97,12 @@
 </ul>
 </li>
 <li>KeyLocationLookup Singleton - single instance for keylocation lookup</li>
-<li>Hashtable inside KeyLocationLookup to store NativeKeyEvent KeyLocations correlating KeyEvent integer values</li>
+<li>Hashtable inside KeyLocationLookup to store NativeKeyEvent KeyLocations corresponding KeyEvent integer values</li>
 <li>Mouse and Keyboard Adapters to listen for actions within the global screen. Those adapters also function as observers for the GlobalScreen.</li>
 <li>Stack to store the recorded actions</li>
 <li>Custom MouseCoordinatesConverter component that will convert true x,y mouse coordinates to relative x, y mouse coordinates scaled to each computer's unique screen size</li>
-<li>State machine handling action transitions and entries when a key/mouse is pressed</li>
+<li>State machine under GUILogger handling action transitions and entries when a key/mouse is pressed</li>
+<li>TreeMap under KeyCursorLookup to store NativeKeyEvent VC values and corresponding KeyEvent VK values</li>
 </ul>
 <h5 id="known-bugs">Known Bugs</h5>
 <ul>
