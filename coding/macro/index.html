@@ -72,12 +72,13 @@
               
                 <h1 id="macro-maker">Macro Maker</h1>
 <h3 id="description">Description</h3>
-<p>The Macro project was my final project for Java Data Structures (H) in 10th grade. The final product would allow the user to record all inputs into a computer, including things such as mouse movements, dragging, mouse clicks, key presses, scrolling, and delays. Those actions should then be stored and logged. The actions can then be replayed by exactly as they were recorded.</p>
+<p>The Macro project was my final project for Java Data Structures (H) in 10th grade. The final product allows the user to start and end a global recording of all inputs to the computer. The global recording will inputs including mouse movements; mouse dragging; mouse clicking, releasing, and holding; key presses, releases, and hold times; and any simultaneous combination of events. The actions are also logged in the logger.out file. After the user begins recording, (CTRL + SHIFT+ R), all henceforth input actions are stored as objects in a stack until the user stops recording (CTRL + SHIFT + S). Upon replaying the stored actions, the program will iterate through the stack and call each object's press() method to execute the action exactly as performed. The press() methods also delays the action's execution as to match the delays between actions of the original recording. The program does not interfere with input actions or other applications in any way.</p>
 <p><center>
 <br> </p>
 <p></center></p>
 <h3 id="download">Download</h3>
 <p><center></p>
+<h5 id="the-github-repo-can-be-found-here">The github repo can be found <a href="https://github.com/richard-shan/macro" download="Macro Maker.jar">here</a>.</h5>
 <h5 id="the-jar-executable-can-be-downloaded-here">The jar executable can be downloaded <a href="../macro.jar" download="Macro Maker.jar">here</a>.</h5>
 <p><br></p>
 <h5 id="instructions-for-use">Instructions for Use</h5>
@@ -96,19 +97,16 @@
 <li>Every action class follows the command archetype, allowing the encapsulation of a request as an object.</li>
 </ul>
 </li>
-<li>KeyLocationLookup Singleton - single instance for keylocation lookup</li>
-<li>Hashtable inside KeyLocationLookup to store NativeKeyEvent KeyLocations corresponding KeyEvent integer values</li>
+<li>KeyLocationLookup <ul>
+<li>Singleton - single instance of the lookup object that is referenced every time a key conversion is needed</li>
+<li>Hashtable inside KeyLocationLookup to store NativeKeyEvent KeyLocations and corresponding KeyEvent integer values for conversion</li>
+</ul>
+</li>
 <li>Mouse and Keyboard Adapters to listen for actions within the global screen. Those adapters also function as observers for the GlobalScreen.</li>
 <li>Stack to store the recorded actions</li>
-<li>Custom MouseCoordinatesConverter component that will convert true x,y mouse coordinates to relative x, y mouse coordinates scaled to each computer's unique screen size</li>
+<li>Custom MouseCoordinatesConverter component that will convert true x,y mouse coordinates to relative x, y mouse coordinates scaled to each computer's unique screen size. Also functions as an adapter.</li>
 <li>State machine under GUILogger handling action transitions and entries when a key/mouse is pressed</li>
 <li>TreeMap under KeyCursorLookup to store NativeKeyEvent VC values and corresponding KeyEvent VK values</li>
-</ul>
-<h5 id="known-bugs">Known Bugs</h5>
-<ul>
-<li>Delay when starting replay</li>
-<li>Middle click not recording </li>
-<li>SHIFT and CTRL keys remain pressed after sequence ends</li>
 </ul>
               
             </div>
