@@ -10,6 +10,8 @@ nav:
   #     - Flashing Glasses: glasses.md
   # - Macro Project: macroProj.md
 theme: readthedocs
+highlightjs: true
+
 
 
 

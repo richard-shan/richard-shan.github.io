@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Macro - Richard Shan</title>
+    <title>Macro Maker - Richard Shan</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Macro";
+        var mkdocs_page_name = "Macro Maker";
         var mkdocs_page_input_path = "coding\\macro.md";
         var mkdocs_page_url = null;
       </script>
@@ -61,7 +61,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Macro</li>
+      <li class="breadcrumb-item active">Macro Maker</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -70,23 +70,56 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="macro-maker-very-much-wip">Macro Maker (very much wip)</h2>
-<p>The Macro project was my final project for Java Data Structures. The goal of the project was to allow the user to record all inputs into a computer, including things such as mouse movements, dragging, mouse clicks, key presses, scrolling, and delays. Those actions should then be stored or logged. The actions can then be replayed exactly as they were recorded.</p>
+                <h1 id="macro-maker">Macro Maker</h1>
+<h3 id="description">Description</h3>
+<p>The Macro project was my final project for Java Data Structures (H) in 10th grade, of which the requirements can be found <a href="https://docs.google.com/document/d/1YyRJAjr6AHJwiUSStHezJ4-zOyjFD9SiHnrGyFUSEps/edit#heading=h.ulg8gjex5xs6"><strong>here</strong></a>. The final product allows the user to start and end a global recording of all inputs to the computer. The global recording will inputs including mouse movements; mouse dragging; mouse clicking, releasing, and holding; key presses, releases, and hold times; and any simultaneous combination of events. The actions are also logged in the logger.out file. After the user begins recording, (CTRL + SHIFT+ R), all henceforth input actions are recorded until the user stops recording (CTRL + SHIFT + S). Upon replaying, the program will execute the actions exactly as recorded. The press() methods also delays the action's execution as to match the delays between actions of the original recording. The program does not interfere with input actions or other applications in any way.</p>
+<h3 id="method">Method</h3>
+<p>The main library that enabled the creation of this project is <a href="https://github.com/kwhat/jnativehook"><strong>JNativeHook</strong></a>, which allows the global tracking of all actions that are sent into a computer, as opposed to only being able to detect inputs inside a specific window. In this project, JNativeHook's GlobalScreen and adapters were used, but I have overriden the action listeners and adapters with my own code to suit the needs of this project, specifically storage and replaying of inputs. </p>
+<p>When the program is running and recording is true (the user has started recording), every input action triggers a specific handler method which is able to encapsulate the event as an object to store in the recordedActions stack. During recording, a global variable of time is used to keep track of delays between actions. Every time a new action is recorded, the variable is then updated to the time in milliseconds when the action was performed. When the next action is then recorded, subtracting the last recorded time from the current system time gives us the delay, which is stored as part of the action object. Then, the time variable is updated. Thus, we are able to track the delays between actions in order to replay them at the right times. </p>
+<p>The different action classes (ClickPress, ClickRelease, KeyPress, KeyRelease, MouseMove) allow the program to store every input as an individual object. All these classes implement the Action interface, giving them all a press() method which is called when replaying. Here is an example of the handler method creating a new object:</p>
+<pre><code class="language-java">   @Override
+    public void nativeKeyPressed(NativeKeyEvent e) {
+        recordedActions.add(new KeyPress(e, Math.abs(System.currentTimeMillis()-time)));
+        time = System.currentTimeMillis();
+    } 
+</code></pre>
+
+<p>The other adapter and conversion classes (SwingKeyAdapter, MouseCoordinateConverter, KeyLocationLookup, KeyCursorLookup) allow for conversion between different keycodes and screen sizes. The SwingKeyAdapter, KeyLocationLookup, and KeyCursorLookup classes convert VC keycodes used by NativeKeyEvent into VK keycodes used by KeyEvent. The MouseCoordinateConverter class allows for conversion between physical mouse cursor coordinate positions and scaled mouse cursor coordinate positions, allowing MouseMove to move the cursor to the corrent point for all screen sizes on different computers.</p>
+<p>During recording, all input actions are created as new objects of their respective class and are stored in a stack until the user stops. Upon replaying the stored actions, the program will iterate through the stack and call each object's press() method to execute the action exactly as performed. </p>
 <p><center>
-<img src="../pics/macroPlanningChart.jpg" alt="macroMaker_flow_chart" width="450"/></p>
-<p><br> <br></p>
+<br> </p>
+<p></center></p>
+<h3 id="download">Download</h3>
+<p><center></p>
+<h5 id="the-github-repo-can-be-found-here">The github repo can be found <a href="https://github.com/richard-shan/macro">here</a>.</h5>
 <h5 id="the-jar-executable-can-be-downloaded-here">The jar executable can be downloaded <a href="../macro.jar" download="Macro Maker.jar">here</a>.</h5>
-<p><br> <br></p>
+<p><br></p>
 <h5 id="instructions-for-use">Instructions for Use</h5>
 <p>Start Recording Keystrokes: CTRL + SHIFT + R</p>
 <p>Stop Recording Keystrokes and Save: CTRL + SHIFT + S</p>
 <p>Replay Saved Keystroke Sequence: CTRL + SHIFT + 1</p>
-<p><br> 
+<p><br> <br>
 </center></p>
-<h5 id="known-bugs">Known Bugs</h5>
+<h3 id="initial-planning-chart">Initial Planning Chart</h3>
+<p><center></p>
+<p><img src="../pics/macroPlanningChart.jpg" alt="macroMaker_flow_chart" width="450"/>
+</center></p>
+<h5 id="key-elements">Key Elements</h5>
 <ul>
-<li>Issues with delay between actions</li>
-<li>SHIFT and CTRL keys remain pressed after sequence ends</li>
+<li>Action interface implemented by all the action/event classes: ClickPress, ClickRelease, KeyPress, KeyRelease, MouseMove, etc.<ul>
+<li>Every action class follows the command archetype, allowing the encapsulation of a request as an object.</li>
+</ul>
+</li>
+<li>KeyLocationLookup <ul>
+<li>Singleton - single instance of the lookup object that is referenced every time a key conversion is needed</li>
+<li>Hashtable inside KeyLocationLookup to store NativeKeyEvent KeyLocations and corresponding KeyEvent integer values for conversion</li>
+</ul>
+</li>
+<li>Mouse and Keyboard Adapters to listen for actions within the global screen. Those adapters also function as observers for the GlobalScreen.</li>
+<li>Stack to store the recorded actions</li>
+<li>Custom MouseCoordinatesConverter component that will convert true x,y mouse coordinates to relative x, y mouse coordinates scaled to each computer's unique screen size. Also functions as an adapter.</li>
+<li>State machine under GUILogger handling action transitions and entries when a key/mouse is pressed</li>
+<li>TreeMap under KeyCursorLookup to store NativeKeyEvent VC values and corresponding KeyEvent VK values</li>
 </ul>
               
             </div>
