@@ -71,24 +71,68 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="deep-dive-into-fusion-360-part-2">Deep Dive into Fusion 360 (Part 2)</h1>
-<h2 id="bicycle-rack-design">Bicycle Rack Design</h2>
-<p>As a review and challenge for our current Fusion360 knowledge, I was asked to design a bicycle rack to a set of specified dimensions. Here is the image with dimensions that I was designing off of:</p>
+<h2 id="flattened-cone-warmup">Flattened Cone Warmup</h2>
+<p>As a warmup before starting class one day, I designed a flattened cone to the following specifications:</p>
 <p><center>
-<img src="../../pics/fusion2/bikerackDimensions.png" alt="Required bike rack dimensions" width="500" height="400"/>
+<img src="../../pics/fusion2/coneSpecs.png" alt="Flattened cone dimensions" width="270" height="400"/>
 </center></p>
-<p>The following two images are of my bicycle rack design. The image on the left is a cross-section view demonstrating that my dimensions match that of the example. The image on the right is a view of the actual 3-D design after I swept a circle over the path (the sketch on the left).</p>
+<p>I first made a sketch on the ZY-plane in Fusion360, where I created a quadrilateral to match the one shown in the requirements image.</p>
+<p><center>
+<img src="../../pics/fusion2/coneSketch.png" alt="Flattened cone sketch" width="270" height="400"/>
+</center></p>
+<p>I then used the Revolve tool to revolve the entire quadrilateral sketch 360 degrees around the Z axis to create a full flattened cone:</p>
+<p><center>
+<img src="../../pics/fusion2/coneRevolve.png" alt="Flattened cone sketch" width="270" height="400"/>
+</center></p>
+<p>Finally, since the warmup asked me for a 2D drawing, I generated a 2D drawing based off the design.</p>
 <p><center></p>
 <table>
     <tr>
-        <td><img src="../../pics/fusion2/myDimensions.png" alt="Dimensions of my design" width="500" height="400"/></td>
+        <td><img src="../../pics/fusion2/flattenedCone.png" alt="Flattened Cone 3D view" width="500" height="400"/></td>
+        <td><img src="../../pics/fusion2/cone2D.png" alt="Flattened Cone 2D drawing" width="400" height="300"/></td>
+    </tr>
+</table>
+<p></center></p>
+<p><br></p>
+<h2 id="bicycle-rack-design">Bicycle Rack Design</h2>
+<p>As a review and challenge for my current Fusion360 knowledge, I was asked to design a bicycle rack to a set of specified dimensions. Here is the image with dimensions that I was designing off of:</p>
+<p><center>
+<img src="../../pics/fusion2/bikerackDimensions.png" alt="Required bike rack dimensions" width="500" height="400"/>
+</center></p>
+<p>I first created a sketch on the ZY-plane and used the line and circle tools to design my sketch to match the specified dimensions:</p>
+<p><center>
+<img src="../../pics/fusion2/myDimensions.png" alt="Dimensions of my design" width="400" height="400"/>
+</center></p>
+<p>I then created a new sketch on the XY-plane and created a circle with a diameter of 4mm. To make the design 3D, I used the sweep tool to sweep the circle along the path of the bike rack.</p>
+<p><center></p>
+<table>
+    <tr>
+        <td><img src="../../pics/fusion2/bikerackSweep.png" alt="Dimensions of my design" width="400" height="400"/></td>
         <td><img src="../../pics/fusion2/bikerack3DView.png" alt="3D view of my design" width="400" height="300"/></td>
     </tr>
 </table>
-
 <p></center></p>
 <p><br></p>
 <h2 id="generating-2d-drawings">Generating 2D Drawings</h2>
-<p>I used <a href="https://www.youtube.com/watch?v=L0IwfH-9Fss"><strong>Kevin Kennedy's Youtube Video</strong></a> to learn how to generate 2D drawings in Fusion. To make a 2D drawing, I first navigated to the design I wanted to make a drawing of. I then clicked on the <span style="color:blue">File</span> dropdown menu, and clicked <span style="color:blue">New Drawing</span> -&gt; <span style="color:blue">From Design</span>, making sure to select the object I wanted a drawing of. For practice creating 2D drawings, I used the Fusion360 example design for a connector joint.</p>
+<p>I used <a href="https://www.youtube.com/watch?v=L0IwfH-9Fss"><strong>Kevin Kennedy's Youtube Video</strong></a> to learn how to generate 2D drawings in Fusion. To make a 2D drawing, I first navigated to the design I wanted to make a drawing of. I then clicked on the <span style="color:blue">File</span> dropdown menu, and clicked <span style="color:blue">New Drawing</span> -&gt; <span style="color:blue">From Design</span>, making sure to select the object I wanted a drawing of. To practice making 2D drawings, I generated a drawing from the Fusion360 example design for a connector joint:</p>
+<p><center>
+<img src="../../pics/fusion2/connectorJoint2D.png" alt="2D Drawing of connector joint" width="500" height="400"/></p>
+<p>I then created a 2D drawing of my bicycle rack design:</p>
+<p><img src="../../pics/fusion2/bikerack2D.png" alt="2D Drawing of bicycle rack" width="500" height="400"/>
+</center></p>
+<p><br></p>
+<h2 id="lego-technic-brick-design">Lego Technic Brick Design</h2>
+<p>For more practice designing objects in Fusion, I was asked to create a Lego Technic Brick from the following image to its dimensions:</p>
+<p><center>
+<img src="../../pics/fusion2/technicBrickSpecs.png" alt="Dimensions image of Lego technic brick" width="300" height="200"/>
+</center></p>
+<p>There were many possible approaches to designing the brick, but I started with a 3D rectangular prism to match the general specifications of the actual brick part of the Lego. From there, I created concentric circles on the sides and the top, and extruded them (both as a new body and as a hole function) to the dimensions in the image. To create the Lego connectors at the bottom, I created 3 circles centered at the midpoints between the radii of the circle connectors on the top of the Lego brick. I then shelled the entire rectangular prism to hollow it out. Here is my completed design:</p>
+<p><center>
+<img src="../../pics/fusion2/technicBrickDesign.png" alt="Dimensions image of Lego technic brick" width="300" height="200"/>
+</center></p>
+<p><br></p>
+<h2 id="custom-lego-design">Custom Lego Design</h2>
+<p>I was then challenged to design a custom lego brick. The following image shows the brick that I was assigned to design:</p>
               
             </div>
           </div><footer>
