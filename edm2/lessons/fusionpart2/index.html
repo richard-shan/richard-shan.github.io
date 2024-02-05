@@ -223,7 +223,7 @@
 <p></center>
 <br></p>
 <h2 id="custom-object-design">Custom Object Design</h2>
-<p>To further practice using Fusion, I decided to design a pen holder, of which the tutorial can be found <a href="https://www.youtube.com/watch?v=90q0aRF4kqw"><strong>here</strong></a>. My Fusion360 file of the design can be downloaded <a href="https://a360.co/42goVUB"><strong>here</strong></a>.</p>
+<p>To further practice using Fusion, I decided to design a pen holder, of which the tutorial can be found <a href="https://www.youtube.com/watch?v=90q0aRF4kqw"><strong>here</strong></a>. My Fusion360 file of the design can be downloaded <a href="https://a360.co/42goVUB"><strong>here</strong></a>. To make the design, I started off with shelling a large cylinder. I then created a polygon on the XZ plane and extruded it as a hole onto the surface of the cylinder. I then repeated this across the whole surface of the cylinder via the rectangular and circular pattern tools.</p>
 <p><center></p>
 <table>
     <tr>
@@ -232,6 +232,20 @@
     </tr>
 </table>
 <p></center></p>
+<p>To print this file, I first exported the file out of Fusion360 and opened it in PrusaSlicer. I then sliced the file with grid supports and a 15% infill, scaling the design down to finish printing under an hour. Since I was printing at home, my printer wasn't setup with wifi capabilities, so I saved the sliced file onto a flash drive which I then plugged into the printer.</p>
+<p>Because the hexagonal patterning was so thin, when I originally printed the design, it was heavily reliant on supports. Those supports obscured the actual design and when I tried to peel them away, the entire design crumbled.</p>
+<p><center></p>
+<table>
+    <tr>
+        <td><img src="../../pics/fusion2/originalPrint.jpg" alt="Original print with too many supports" width="400" height="400"/></td>
+        <td><img src="../../pics/fusion2/originalPrintPeeled.jpg" alt="Broken print when trying to remove supports" width="400" height="300"/></td>
+    </tr>
+</table>
+<p></center></p>
+<p>To solve this issue, I first upscaled the print which made the mesh more stable. I also changed the support type to be organic instead of grid, which minimized the points of contact between the supports and the actual print. This time, the supports were a lot easier to remove and did not damage the structure</p>
+<p><center>
+<img src="../../pics/fusion2/organic.jpg" alt="Print with organic supports" width="400" height="300"/>
+</center></p>
               
             </div>
           </div><footer>
