@@ -2,7 +2,6 @@ site_name: Richard Shan
 nav:
   - Home: index.md
   # - Coding Projects: coding.md
-  - About: about.md
   # - Fab Academy:
   #   - Pre-Fab:
   #     - Storage Box: fab/cardboardBox.md
