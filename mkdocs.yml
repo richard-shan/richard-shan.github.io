@@ -8,7 +8,7 @@ nav:
   #     - Tiny Arcade: arcade.md
   #     - Flashing Glasses: glasses.md
   # - Macro Project: macroProj.md
-theme: readthedocs
+theme: material
 highlightjs: true
 
 
