@@ -325,13 +325,13 @@
 <h1 id="smathhacks2025">SMathHacks2025</h1>
 <p>This page includes documentation for ARES-M: Atmospheric Remote Environmental System for Mars, submitted for the Hardware track at the  SMathHacks 2025 hackathon. Our team members include <a href="mailto:richardmshan@gmail.com"><strong>Richard Shan</strong></a>, <a href="mailto:sah26a@ncssm.edu"><strong>Aaditya Sah</strong></a>, <a href="mailto:bedson26t@ncssm.edu"><strong>Trevor Bedson</strong></a>, and <a href="mailto:chilukuri26j@ncssm.edu"><strong>Josh Chilukuri</strong></a>. ARES is a remote autonomous sensor suite for Mars, monitoring temperature, humidity, seismic activity, UV/IR, and soil moisture in real time to advance planetary science and environmental research. <a href="https://smathhacks-2025.devpost.com/"><strong>SMathHacks 2025</strong></a> was hosted 2/8/2025 to 2/9/2025.</p>
 <p><center>
-<img src="../../pics/smathhacks.png" alt="SMathHacks Logo" width="350"/>
+<img src="https://richard-shan.github.io/pics/smathhacks.png" alt="SMathHacks Logo" width="350"/>
 </center></p>
 <p>ARES is an integrated hardware-software solution featuring a remote sensor suite to detect temperature, humidity, seismic activity, and soil moisture monitoring on Mars. The nature of ARES' scalable mesh network deployment enables real-time environmental data acquisition across a distributed sensor array on multiple varied geographic locations simultaneously. A geospatially interactive interface allows users to access and analyze live telemetry along with a visualization of recently recorded data.</p>
 <h2 id="inspiration">Inspiration</h2>
 <p>The idea for ARES emerged from the need for a more efficient and scalable approach to environmental monitoring on Mars. Existing planetary weather stations such as NASA’s InSight lander and Curiosity’s REMS provide valuable atmospheric and seismic data but are limited in coverage and flexibility. InSight, for example, offers stationary readings from a single location, while Curiosity’s sensors can only gather data wherever the rover happens to be. These limitations pose challenges for understanding global weather patterns, seismic activity, and potential water presence on Mars. Given the planet’s extreme conditions—dust storms, drastic temperature shifts, and geological activity—there is a critical need for a distributed, autonomous sensor system capable of continuous real-time data collection across multiple locations.</p>
 <p><center>
-<img src="../../smathhacks/pics/insightLander.jpg" alt="Insight Lander" width="550"/>
+<img src="https://richard-shan.github.io/smathhacks/pics/insightLander.jpg" alt="Insight Lander" width="550"/>
 </center></p>
 <p>ARES was designed to address these challenges through a scalable mesh network of remote sensor pods that can be deployed across varied Martian terrain. These pods continuously monitor temperature, humidity, seismic activity, and soil moisture, providing high-resolution environmental data to researchers. AI integration allows for real-time processing, adaptive calibration, and anomaly detection, enhancing data accuracy and reliability in Mars’ harsh conditions. The system is paired with a geospatial visualization platform, enabling users to interact with a live map of Mars, click on sensor locations, and access real-time environmental data streams. Inspired by terrestrial meteorological and seismic networks, ARES brings a planetary-scale sensing solution to Mars, laying the groundwork for future habitat planning, climate research, and exploration missions.</p>
 <h2 id="ideation">Ideation</h2>
@@ -340,37 +340,34 @@
 <h2 id="cad">CAD</h2>
 <p>Since we developed the entire device in only two days, we created a simple yet highly effective and theme-matching CAD model. We created a hexagonal case for our electronics, with spots on the top for the sunlight and temperature/humidity sensor, as those needed access to light or the air respectively. We created an opening on the bottom of the hexagonal case for the soil moisture sensor to be deployed from. Spikes were added on the bottom as a way for the device to mount into extraterrestrial soil when dropped from a decent height, and serves to secure the device in place. We notate the ARES name and Pod number on the top of each individual pod.</p>
 <p><center>
-<img src="../pics/aresHomeView.jpg" alt="Ares Home View" width="450"/>
+<img src="https://richard-shan.github.io/smathhacks/pics/aresHomeView.jpg" alt="Ares Home View" width="450"/>
 </center></p>
 <p>Internally, we designed mounts for the temperature/humidity sensor, sunlight sensor, and the MPU6050. The temperature/humidity sensor mount is shown on the left side of this image, and has a mesh on top of it so that the sensor is not completely exposed to the elements whilst also being able to access air for measuring humidity and temperature. The sunlight sensor mount is on the right side of this internal image, and faces directly upward into the sky to access the light. In production, we put a section of clear tape over the hole so that the sensor is protected while also being able to access its necessary measurements. The accelerometer and gyroscope sensor is mounted to the print directly, and is aided in contact area by the mount located in the upper right extrusion in this image. The servo is mounted in production directly to the print.</p>
 <p><center>
-<img src="../pics/aresInternal.jpg" alt="Ares Internal View" width="450"/>
+<img src="https://richard-shan.github.io/smathhacks/pics/aresInternal.jpg" alt="Ares Internal View" width="450"/>
 </center></p>
 <p>The locations for the temperature/humidity sensor and sunlight sensor are clearly visible in the top view of the design. The mesh underneath the Pod 1 label houses the temperature/humidity sensor. The small cutout above the ARES insignia is where the sunlight sensor is mounted, and protected by a tape-over.</p>
 <p><center>
-<img src="../pics/aresTopView.jpg" alt="Ares Top View" width="450"/>
+<img src="https://richard-shan.github.io/smathhacks/pics/aresTopView.jpg" alt="Ares Top View" width="450"/>
 </center></p>
 <p>Finally, we added spikes on the bottom to act as stakes to secure the ARES Pod to the ground, and protect it in dangerous Martian conditions such as storms and earthquakes. It is important  that ARES is able to survive these events and continue transmitting data, as gathering data about these abnormalities is a key application of ARES.</p>
 <p><center>
-<img src="../pics/aresBottomView.jpg" alt="Ares Bottom View" width="450"/>
+<img src="https://richard-shan.github.io/smathhacks/pics/aresBottomView.jpg" alt="Ares Bottom View" width="450"/>
 </center></p>
 <h2 id="electrical-engineering">Electrical Engineering</h2>
 <p>Before beginning any electrical engineering, we first researched the pinouts of all the sensors that we were to use. We then assembled the entire circuit in a basic schematic to plan out everything. Unfortunately, during these two days we were unable to access a desktop CNC machine to mill a PCB, so we never ended up creating a board design and instead simply referred to the schematic during design and soldering.</p>
 <p><center>
-<img src="../pics/wiringSchematic.jpg" alt="Schematic" width="750"/>
+<img src="https://richard-shan.github.io/smathhacks/pics/wiringSchematic.jpg" alt="Schematic" width="750"/>
 </center></p>
 <p>Before we assembled the finalized soldered circuit, we first tested using a test ESP32 Feather V2 board on a breadboard circuit. We used the same wiring that would be our final design, excluding the servo that was added in a later iteration.</p>
 <p><center>
-<img src="../pics/featherBreadboard.jpg" alt="Breadboard circuit" width="450"/>
+<img src="https://richard-shan.github.io/smathhacks/pics/featherBreadboard.jpg" alt="Breadboard circuit" width="450"/>
 </center></p>
 <p>As the ESP32 Feather V2 board was NCSSM property, we switched over to a spare Xiao Seeed ESP32S3 chip that Richard had. We chose the ESP32 architecture due to its native Wi-Fi capabilities, as we knew we would send data over a wireless network to the frontend. This involved minor changes in our code. Here is what our final circuit looks like when it is integrated into the system.</p>
 <p><center>
-<img src="../pics/integratedCircuit.jpg" alt="Final Circuit Integrated" width="600"/>
+<img src="https://richard-shan.github.io/smathhacks/pics/integratedCircuit.jpg" alt="Final Circuit Integrated" width="600"/>
 </center></p>
-<p>We used the following sensors: MPU6050 gyroscope/accelerometer, SI1145 sunlight sensor, DHT11 temperature/humidity sensor, and a capacitive soil moisture sensor. The following is a picture of our final product.</p>
-<p><center>
-<img src="../pics/finalProduct.jpg" alt="Final Product" width="600"/>
-</center></p>
+<p>We used the following sensors: MPU6050 gyroscope/accelerometer, SI1145 sunlight sensor, DHT11 temperature/humidity sensor, and a capacitive soil moisture sensor.</p>
 <h2 id="backend-software">Backend Software</h2>
 <p>Our following ESP32-based embedded system script establishes a Wi-Fi connection to facilitate remote environmental and motion data acquisition, processing, and transmission. It integrates multiple sensor modalities, including an MPU6050 inertial measurement unit (IMU) for three-axis acceleration and angular velocity, a DHT11 for temperature and humidity sensing, an SI1145 for ultraviolet (UV) and infrared (IR) irradiance measurement, and a capacitive soil moisture sensor for substrate hydration assessment. A servo motor is utilized for lowering the soil moisture sensor into the ground for more accurate readings.</p>
 <p>The system utilizes I2C communication protocol to acquire real-time sensor readings, which are encapsulated within a structured JSON object via the ArduinoJson library. This JSON payload is transmitted via an HTTP POST request to a remote server hosting the frontend API endpoint and is secured through authentication tokens. The pod transmits data through the mesh network to the endpoint every 5 seconds to ensure live-time data measurements. The system concurrently logs network status and signal strength to the serial interface for diagnostic purposes, since we experienced many issues with Wi-Fi during development.</p>
