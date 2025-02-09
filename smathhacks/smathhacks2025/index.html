@@ -367,6 +367,7 @@
 <p><center>
 <img src="../pics/integratedCircuit.jpg" alt="Final Circuit Integrated" width="600"/>
 </center></p>
+<p>We used the following sensors: MPU6050 gyroscope/accelerometer, SI1145 sunlight sensor, DHT11 temperature/humidity sensor, and a capacitive soil moisture sensor.</p>
 <h2 id="backend-software">Backend Software</h2>
 <p>Our following ESP32-based embedded system script establishes a Wi-Fi connection to facilitate remote environmental and motion data acquisition, processing, and transmission. It integrates multiple sensor modalities, including an MPU6050 inertial measurement unit (IMU) for three-axis acceleration and angular velocity, a DHT11 for temperature and humidity sensing, an SI1145 for ultraviolet (UV) and infrared (IR) irradiance measurement, and a capacitive soil moisture sensor for substrate hydration assessment. A servo motor is utilized for lowering the soil moisture sensor into the ground for more accurate readings.</p>
 <p>The system utilizes I2C communication protocol to acquire real-time sensor readings, which are encapsulated within a structured JSON object via the ArduinoJson library. This JSON payload is transmitted via an HTTP POST request to a remote server hosting the frontend API endpoint and is secured through authentication tokens. The pod transmits data through the mesh network to the endpoint every 5 seconds to ensure live-time data measurements. The system concurrently logs network status and signal strength to the serial interface for diagnostic purposes, since we experienced many issues with Wi-Fi during development.</p>
@@ -554,11 +555,82 @@ void printWifiStatus() {
 }
 </code></pre>
 <h2 id="frontend">Frontend</h2>
+<p>The front end was developed using a Next.js framework powered by React, Typescript, Tailwind CSS, and Post CSS. A Postgresql database was deployed using Docker to collect real-time live data from the sensor. To interact with the data, we used Prisma ORM and created our API for the embedded system to send information. We used the Chart.js library to create data visualizations. </p>
+<p>Postgresql was chosen due to its proficiency in collecting time series and station data structures, which are highly compatible with the relational database and table. Postgresql’s rapid and efficient data storage also allowed us to answer API requests effectively. We deployed our application using docker-compose to securely isolate the database while maintaining client-server interaction. Our front and back end were deployed on a local server, making docker the ideal selection to optimize build speed.. </p>
+<p>We structured our database to have a table for each station, and specific weather data payloads. This decision allowed us to quickly select databases and find associated weather data  by utilizing prisma’s include parameter when querying.</p>
+<pre><code class="language-ts">model Station {
+ id   String @unique
+ name String
+
+
+ weatherData WeatherData[]
+}
+
+
+model WeatherData {
+ id Int @unique @default(autoincrement())
+
+
+ latitude  Float
+ longitude Float
+
+
+ station   Station @relation(fields: [stationId], references: [id])
+ stationId String
+
+
+ pressure    Float
+ temperature Float
+ humidity    Float
+ co2         Float
+ dust        Float
+ wind        Float
+ uv          Float
+ ir          Float
+ moisture    Float
+ light       Float
+ accelX      Float
+ accelY      Float
+ accelZ      Float
+ angVelX     Float
+ angVelY     Float
+ angVelZ     Float
+
+
+ timeTaken DateTime
+}
+</code></pre>
+<p>We kept this structure consistent between internal data structures, and the format we receive data through the API. We originally included the position in the Station table, but later moved it to the time series data table to account for the stations being uprooted or relocated. </p>
+<p>In our GET API route, we utilized Prisma’s powerful filtering features to limit and select specific items. We were able to take advantage of this because of our database structure choices. We filter by time, in ascending order, to select the latest entries, which have the largest time stamps. We further filter by only selecting the last 5 hours. Furthermore, we take the data, which contains 60 datapoints per second, and condense it down to 1 datapoint per minute using averages. </p>
+<pre><code class="language-ts">const data = await prisma.station.findMany({
+  include: {
+  weatherData: {
+   orderBy: {
+    timeTaken: &quot;asc&quot;
+   },
+   where: {
+    timeTaken: {
+     gte: new Date(new Date().getMilliseconds() - 1000 * 60 * 60 * 5) 
+    }
+   }
+  },
+ }
+})
+</code></pre>
+<p>Our POST API route is used to collect data from the station. It is designed to receive a request from our master node and contains the data for each of the pods. It includes very basic key bearer authentication that simplifies and protects our application. We chose the data structure for the payload in order to be consistent with internal data structures and the database structure, and it was easily implemented on the embedded system on our physical device. We also include data points for our simulated stations that slightly modify the actual data to simulate varying weather conditions in a region. </p>
+<p>Our UI design choices were based on speed and efficiency. This is why we decided to go with Typescript, as its strongly typed nature allows us to identify type errors before we run code quickly. We also decided to use Tailwindcss in order to quickly style our components. Finally, Next.js allows us to quickly test, build, and deploy. </p>
+<p>The web interface consists of an interactive map and a navigation bar containing information from the sensors. Different tabs display relevant charts and statistics for corresponding environmental measurements, including Earthquake detection (by calculating an aggregated average of accelerometer values),  soil moisture percentage, average/max/min temperature and humidity, light wavelengths, and geographic position. </p>
+<p>Using the library ChartJS alongside html canvas, we can create an interactive UI to showcase the data and allow users to vizualize ARES pods. ChartJS allowed us to quickly chart and format our data, and helped us greatly save time and create an appealing front end. Furthermore, html canvas allowed us to place the pods on the map in their exact positions based on their collected latitude and longitude. </p>
 <h2 id="integration">Integration</h2>
-<p>The code integrates seamlessly with the frontend by using JSON as a standardized data format to transmit sensor information. Within the code, sensor readings from multiple devices—such as temperature, humidity, UV index, IR levels, soil moisture, and motion data from the MPU6050—are structured into a JSON document using the ArduinoJson library. This JSON payload encapsulates the sensor data along with metadata like timestamps and station identifiers, making it easy to manage and extend. Once the payload is constructed, it is serialized into a string and sent via an HTTP POST request to a remote API endpoint. This API, which is typically part of a backend service connected to the frontend, receives the JSON data and processes it accordingly.</p>
-<p>On the frontend, the received JSON data can be parsed and dynamically rendered using modern web development frameworks and libraries such as React, Angular, or Vue.js. The structured JSON makes it straightforward for the frontend to extract specific sensor readings and display them in an interactive dashboard—using charts, graphs, and real-time status updates. This approach not only ensures a consistent and efficient communication channel between the IoT device and the web interface but also allows for scalable integration where additional sensor data or stations can be added without disrupting the data flow. Ultimately, JSON serves as the bridge that connects the physical sensor network with the digital user interface, enabling real-time monitoring and control.</p>
+<p>The backend Arduino code integrates seamlessly with the frontend by using JSON as a standardized data format to transmit sensor information. Within the code, sensor readings from multiple devices—such as temperature, humidity, UV index, IR levels, soil moisture, and motion data from the MPU6050—are structured into a JSON document using the ArduinoJson library. This JSON payload encapsulates the sensor data along with metadata like timestamps and station identifiers, making it easy to manage and extend. Once the payload is constructed, it is serialized into a string and sent via an HTTP POST request to a remote API endpoint. This API, which is typically part of a backend service connected to the frontend, receives the JSON data and processes it accordingly. A sample JSON string which is transmitted will look like the following:</p>
+<pre><code>{&quot;time&quot;:22651,&quot;stations&quot;:[{&quot;id&quot;:&quot;STATION_1&quot;,&quot;latitude&quot;:0.1,&quot;longitude&quot;:0.1,&quot;temperature&quot;:23,&quot;humidity&quot;:36,&quot;uv&quot;:0.02,&quot;ir&quot;:254,&quot;moisture&quot;:52,&quot;accel&quot;:{&quot;x&quot;:1.019929886,&quot;y&quot;:-0.325611442,&quot;z&quot;:9.361329079},&quot;angVelocity&quot;:{&quot;x&quot;:-0.041834611,&quot;y&quot;:0.022915773,&quot;z&quot;:-0.007993874}}]}
+</code></pre>
+<p>On the frontend, the received JSON data can be parsed and dynamically rendered using modern web development frameworks and libraries such as React, Angular, or Vue.js. The structured JSON makes it straightforward for the frontend to extract specific sensor readings and display them in an interactive dashboard—using charts, graphs, and real-time status updates. This approach allows for scalable integration where additional sensor data or stations can be added without disrupting the data flow. </p>
 <h2 id="impact">Impact</h2>
+<p>The integration of this system into an IoT-based monitoring framework has significant implications for real-time environmental sensing, data transmission, and decision-making. By systematically acquiring data from multiple sensors—including temperature, humidity, ultraviolet (UV) radiation, infrared (IR) levels, soil moisture, and motion tracking via the MPU6050—the system ensures a comprehensive representation of environmental conditions. The collected data is structured into a standardized JSON format, optimizing interoperability between hardware and software layers. Utilizing HTTP POST requests for data transmission enables continuous and automated logging, reducing the reliance on manual intervention and enhancing data accuracy. This approach facilitates real-time analytics and predictive modeling, supporting applications in smart agriculture, climate monitoring, and industrial process optimization.</p>
+<p>From a systems engineering perspective, the use of JSON as a lightweight and structured data exchange format enhances system scalability and integration with web-based visualization tools. The modularity of the architecture allows for seamless expansion, enabling the incorporation of additional sensors without substantial modifications to the data processing pipeline. Furthermore, real-time data dissemination to frontend interfaces, such as interactive dashboards, enhances user engagement and decision support capabilities. This architecture enables advanced analytical techniques, including anomaly detection and machine learning-driven forecasting, by providing structured and time-synchronized datasets. The ability to efficiently collect, transmit, and visualize high-frequency sensor data has profound implications for scientific research, precision monitoring, and the development of autonomous systems.</p>
 <h2 id="future-work">Future Work</h2>
+<p>Future developments in this system can focus on enhancing data processing efficiency, expanding sensor integration, and improving real-time analytics capabilities. One key direction is the implementation of edge computing techniques to preprocess sensor data before transmission, reducing network congestion and minimizing latency in real-time applications. By incorporating onboard machine learning models, such as TinyML for anomaly detection or predictive analytics, the system could autonomously identify critical environmental changes and trigger automated responses. Additionally, improving the robustness of data transmission by implementing MQTT or WebSocket protocols could enable more efficient, low-latency communication compared to the current HTTP-based approach. Furthermore, integrating secure encryption mechanisms for JSON payloads and authentication protocols, such as OAuth 2.0, could enhance data integrity and privacy when transmitting sensitive environmental data to cloud-based platforms.</p>
 
 
 
