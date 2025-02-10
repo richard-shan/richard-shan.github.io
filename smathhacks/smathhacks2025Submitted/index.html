@@ -367,7 +367,10 @@
 <p><center>
 <img src="https://richard-shan.github.io/smathhacks/pics/integratedCircuit.jpg" alt="Final Circuit Integrated" width="600"/>
 </center></p>
-<p>We used the following sensors: MPU6050 gyroscope/accelerometer, SI1145 sunlight sensor, DHT11 temperature/humidity sensor, and a capacitive soil moisture sensor.</p>
+<p>We used the following sensors: MPU6050 gyroscope/accelerometer, SI1145 sunlight sensor, DHT11 temperature/humidity sensor, and a capacitive soil moisture sensor. The following is a picture of our final product.</p>
+<p><center>
+<img src="https://richard-shan.github.io/smathhacks/pics/finalProduct.jpg" alt="Final Product" width="600"/>
+</center></p>
 <h2 id="backend-software">Backend Software</h2>
 <p>Our following ESP32-based embedded system script establishes a Wi-Fi connection to facilitate remote environmental and motion data acquisition, processing, and transmission. It integrates multiple sensor modalities, including an MPU6050 inertial measurement unit (IMU) for three-axis acceleration and angular velocity, a DHT11 for temperature and humidity sensing, an SI1145 for ultraviolet (UV) and infrared (IR) irradiance measurement, and a capacitive soil moisture sensor for substrate hydration assessment. A servo motor is utilized for lowering the soil moisture sensor into the ground for more accurate readings.</p>
 <p>The system utilizes I2C communication protocol to acquire real-time sensor readings, which are encapsulated within a structured JSON object via the ArduinoJson library. This JSON payload is transmitted via an HTTP POST request to a remote server hosting the frontend API endpoint and is secured through authentication tokens. The pod transmits data through the mesh network to the endpoint every 5 seconds to ensure live-time data measurements. The system concurrently logs network status and signal strength to the serial interface for diagnostic purposes, since we experienced many issues with Wi-Fi during development.</p>
