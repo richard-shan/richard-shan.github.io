@@ -16,7 +16,7 @@
     
     
       
-        <title>SMathHacks2025 - Richard Shan</title>
+        <title>ARES-M: Atmospheric Remote Environmental System for Mars - Richard Shan</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#smathhacks2025" class="md-skip">
+        <a href="#ares-m-atmospheric-remote-environmental-system-for-mars" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SMathHacks2025
+              ARES-M: Atmospheric Remote Environmental System for Mars
             
           </span>
         </div>
@@ -227,6 +227,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#judging-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Judging Guidance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#inspiration" class="md-nav__link">
     <span class="md-ellipsis">
       Inspiration
@@ -248,6 +257,15 @@
   <a href="#cad" class="md-nav__link">
     <span class="md-ellipsis">
       CAD
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sensors-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensors Analysis
     </span>
   </a>
   
@@ -307,6 +325,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#work-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Work Distribution
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -322,12 +349,55 @@
                   
 
 
-<h1 id="smathhacks2025">SMathHacks2025</h1>
-<p>This page includes documentation for ARES-M: Atmospheric Remote Environmental System for Mars, submitted for the Hardware track at the  SMathHacks 2025 hackathon. Our team members include <a href="mailto:richardmshan@gmail.com"><strong>Richard Shan</strong></a>, <a href="mailto:sah26a@ncssm.edu"><strong>Aaditya Sah</strong></a>, <a href="mailto:bedson26t@ncssm.edu"><strong>Trevor Bedson</strong></a>, and <a href="mailto:chilukuri26j@ncssm.edu"><strong>Josh Chilukuri</strong></a>. ARES is a remote autonomous sensor suite for Mars, monitoring temperature, humidity, seismic activity, UV/IR, and soil moisture in real time to advance planetary science and environmental research. <a href="https://smathhacks-2025.devpost.com/"><strong>SMathHacks 2025</strong></a> was hosted 2/8/2025 to 2/9/2025.</p>
+<h1 id="ares-m-atmospheric-remote-environmental-system-for-mars">ARES-M: Atmospheric Remote Environmental System for Mars</h1>
+<p>Technical Documentation</p>
+<p>This page includes documentation for ARES-M: Atmospheric Remote Environmental System for Mars, submitted for the <strong>Hardware</strong> track at the SMathHacks 2025 hackathon. Our team members include <a href="mailto:richardmshan@gmail.com">Richard Shan</a>, <a href="mailto:sah26a@ncssm.edu">Aaditya Sah</a>, <a href="mailto:bedson26t@ncssm.edu">Trevor Bedson</a>, and <a href="mailto:chilukuri26j@ncssm.edu">Josh Chilukuri</a>. Our project, ARES, is a remote autonomous sensor suite for Mars, monitoring temperature, humidity, seismic activity, UV/IR, and soil moisture in real time to advance planetary science and environmental research. <a href="https://smathhacks-2025.devpost.com/">SMathHacks 2025</a> was hosted 2/8/2025 to 2/9/2025.</p>
+<p><strong>For a short summary, our project video, final product, and key images can be seen in the media gallery, accessible by clicking the arrows on either side of the video shown above. Note that the video is an ABRIDGED SUMMARY of the work done, and that the technical documentation is a far more comprehensive resource.</strong> Due to limited time, we also recognize that the technical documentation lacks full coverage, but it covers all important steps.</p>
 <p><center>
 <img src="https://richard-shan.github.io/pics/smathhacks.png" alt="SMathHacks Logo" width="350"/>
 </center></p>
 <p>ARES is an integrated hardware-software solution featuring a remote sensor suite to detect temperature, humidity, seismic activity, and soil moisture monitoring on Mars. The nature of ARES' scalable mesh network deployment enables real-time environmental data acquisition across a distributed sensor array on multiple varied geographic locations simultaneously. A geospatially interactive interface allows users to access and analyze live telemetry along with a visualization of recently recorded data.</p>
+<h2 id="judging-guidance">Judging Guidance</h2>
+<p>Although ARES is at heart, a hardware project, we recognize that it is difficult to judge hardware projects remotely and asynchronously, without access to the hardware and guarantees that it is on and running. Thus, we developed a fully integrated frontend which is publicly accessible <a href="https://mars.prorickey.xyz/">here</a>.</p>
+<p><center>
+<img src="https://richard-shan.github.io/smathhacks/pics/frontendLanding.png" alt="Frontend Landing Page" width="350"/>
+</center></p>
+<p>Clicking any of the stations opens a menu on the left side of the screen. The icons in the toolbar represent:</p>
+<table>
+<thead>
+<tr>
+<th>Icon</th>
+<th>Displayed Information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mars Planet Icon</td>
+<td>Home</td>
+</tr>
+<tr>
+<td>Radio Tower Icon</td>
+<td>Pod Latitude/Longitude Info</td>
+</tr>
+<tr>
+<td>Plant Icon</td>
+<td>Live Soil Moisture Over Time Info</td>
+</tr>
+<tr>
+<td>Sun Icon</td>
+<td>Live IR and UV Measurements Over Time Info</td>
+</tr>
+<tr>
+<td>Wind Icon</td>
+<td>Live Temperature and Humidity Data Over Time</td>
+</tr>
+<tr>
+<td>Home Icon</td>
+<td>Live Status of Earthquakes and Seismic Activity</td>
+</tr>
+</tbody>
+</table>
+<p>During the hackathon, we had time to develop one functional ARES prototype. If ARES is currently on, Perseverance's (Station 1) information and charts will be updated in live time. More realistically, ARES will not be plugged in when judging takes place (as I do have school) and Perseverance (Station 1) will be showing information from the last 10 packet sends from ARES to the processor. As we only developed one prototype, Stations 2-6 are displaying simulated data and do not reflect real world information. We simulate the other stations to demonstrate our mesh network proof-of-concept for peer-to-peer information transfer between ARES Pods.</p>
 <h2 id="inspiration">Inspiration</h2>
 <p>The idea for ARES emerged from the need for a more efficient and scalable approach to environmental monitoring on Mars. Existing planetary weather stations such as NASA’s InSight lander and Curiosity’s REMS provide valuable atmospheric and seismic data but are limited in coverage and flexibility. InSight, for example, offers stationary readings from a single location, while Curiosity’s sensors can only gather data wherever the rover happens to be. These limitations pose challenges for understanding global weather patterns, seismic activity, and potential water presence on Mars. Given the planet’s extreme conditions—dust storms, drastic temperature shifts, and geological activity—there is a critical need for a distributed, autonomous sensor system capable of continuous real-time data collection across multiple locations.</p>
 <p><center>
@@ -354,24 +424,159 @@
 <p><center>
 <img src="https://richard-shan.github.io/smathhacks/pics/aresBottomView.jpg" alt="Ares Bottom View" width="450"/>
 </center></p>
+<h2 id="sensors-analysis">Sensors Analysis</h2>
+<p>We plan to be able to measure temperature, humidity, seismic activity, sunlight levels, and soil moisture levels. Temperature and humidity are crucial for understanding environmental conditions, predicting weather patterns, and assessing habitability for both equipment and potential life. Seismic activity measurements help detect ground vibrations, assess tectonic movement, and analyze subsurface structures, providing insights into planetary formation and stability. Sunlight levels, particularly UV and IR radiation, are key for evaluating solar energy availability, studying atmospheric interactions, and identifying potential hazards due to high radiation exposure. Soil moisture detection allows for assessing water content, determining surface composition, and identifying potential regions for resource utilization, which is essential for astrobiology and future exploration. The following table illustrates our choice of sensor based on their availability in a short time frame and their capabilities.</p>
+<table>
+<thead>
+<tr>
+<th>Measurement Type</th>
+<th>Sensor Model</th>
+<th>Parameters Measured</th>
+<th>Communication</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Temperature</td>
+<td>DHT11</td>
+<td>Temperature (°C)</td>
+<td>Digital</td>
+<td>Used for recording temperatures</td>
+</tr>
+<tr>
+<td>Humidity</td>
+<td>DHT11</td>
+<td>Relative Humidity (%)</td>
+<td>Digital</td>
+<td>Integrated with temperature sensor</td>
+</tr>
+<tr>
+<td>Seismic Activity</td>
+<td>MPU6050</td>
+<td>Acceleration (X, Y, Z), Gyro (X, Y, Z)</td>
+<td>I2C</td>
+<td>Used to detect ground vibrations &amp; movement, important for measuring seismic activity on Mars</td>
+</tr>
+<tr>
+<td>UV &amp; IR</td>
+<td>SI1145</td>
+<td>UV Index, Infrared</td>
+<td>I2C</td>
+<td>UV and IR have many uses. Some include the ability to assess habitability, detect water ice, track dust storms, and optimize solar power for future exploration.</td>
+</tr>
+<tr>
+<td>Soil Moisture</td>
+<td>Capacitive Soil Moisture Sensor</td>
+<td>Soil Moisture Level</td>
+<td>Analog</td>
+<td>Moisture level is based on capacitance, which correlates with water concentration level. Measuring soil moisture on Mars and exoplanets aids in detecting water, analyzing geochemistry, and identifying potentially habitable environments for microbial life.</td>
+</tr>
+</tbody>
+</table>
+<p>We ensure that the sensors we want to use are available. We thank Mr. D’Argenio for securing access to the basic hardware necessary for this project. </p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Relevant Sensors</th>
+<th>Supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Temperature</td>
+<td>DHT11</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Humidity</td>
+<td>DHT11</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Seismic Activity</td>
+<td>MPU6050</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>UV Radiation</td>
+<td>SI1145</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Infrared Radiation</td>
+<td>SI1145</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Soil Moisture</td>
+<td>Capacitive Soil Moisture Sensor</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p>Now that we know what sensors we will use, we will analyze their pinouts and datasheets to ensure that we are able to implement them with the chip we want to develop on (Xiao Seeed ESP32S3). We would prefer to run the sensors at 5V, but do have a 3V3 available.</p>
+<table>
+<thead>
+<tr>
+<th>Sensor Model</th>
+<th>Communication</th>
+<th>Pinout</th>
+<th>Power</th>
+<th>Datasheet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DHT11</strong></td>
+<td>Digital (Single-wire)</td>
+<td>VCC, GND, Data</td>
+<td>5V</td>
+<td><a href="https://www.mouser.com/datasheet/2/758/DHT11-Technical-Data-Sheet-Translated-Version-1143054.pdf?srsltid=AfmBOop-65_yPwBc_UCEu-Dr57YEdrWz07-DkzBP8W-JEl8KBc1vTvFj">DHT11 Datasheet</a></td>
+</tr>
+<tr>
+<td><strong>MPU6050</strong></td>
+<td>I2C</td>
+<td>VCC, GND, SCL, SDA, INT</td>
+<td>5V</td>
+<td><a href="https://invensense.tdk.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf">MPU6050 Datasheet</a></td>
+</tr>
+<tr>
+<td><strong>SI1145</strong></td>
+<td>I2C</td>
+<td>VCC, GND, SCL, SDA</td>
+<td>3.3V</td>
+<td><a href="https://www.silabs.com/documents/public/data-sheets/Si1145-46-47.pdf">SI1145 Datasheet</a></td>
+</tr>
+<tr>
+<td><strong>Capacitive Soil Moisture Sensor</strong></td>
+<td>Analog</td>
+<td>VCC, GND, Analog Output</td>
+<td>3.3V</td>
+<td><a href="https://files.seeedstudio.com/wiki/Grove-Capacitive_Moisture_Sensor_Corrosion_Resistant/res/soil_sensor.pdf">Capacitive Soil Moisture Sensor Datasheet</a></td>
+</tr>
+</tbody>
+</table>
+<p>Now that we've verified the feasibility of our project in theory, it is time to implement it. <strong>Note that we implemented a wind speed tracker in the GUI expecting the sensor to arrive the afternoon of 2/9, but it never arrived. Thus, we simulate wind speed data in the frontend interface. Wind speed data is not taken from our sensors and does not represent real world information.</strong></p>
 <h2 id="electrical-engineering">Electrical Engineering</h2>
-<p>Before beginning any electrical engineering, we first researched the pinouts of all the sensors that we were to use. We then assembled the entire circuit in a basic schematic to plan out everything. Unfortunately, during these two days we were unable to access a desktop CNC machine to mill a PCB, so we never ended up creating a board design and instead simply referred to the schematic during design and soldering.</p>
+<p>We first assembled the entire circuit in a basic schematic to plan out everything. Unfortunately, during these two days we were unable to access a desktop CNC machine to mill a PCB, so we decided to not create an actual board design to save time and instead simply referred to the schematic during design and soldering. Due to limited time and lack of needing a proper PCB, Richard decided to forego foraging for footprints and instead spoofed them with labelled conn headers corresponding to sensor pinouts, a strategy that saved time and is sufficient for our current situation. In the future, we plan to continue this project after the hackathon and will design a PCB proper for production. </p>
 <p><center>
 <img src="https://richard-shan.github.io/smathhacks/pics/wiringSchematic.jpg" alt="Schematic" width="750"/>
 </center></p>
-<p>Before we assembled the finalized soldered circuit, we first tested using a test ESP32 Feather V2 board on a breadboard circuit. We used the same wiring that would be our final design, excluding the servo that was added in a later iteration.</p>
+<p>Before we assembled the finalized soldered circuit, we first tested using a test ESP32 Feather V2 board on a breadboard circuit. We used the same wiring that would be our final design, excepting the servo. We later decided to implement a servo mechanism to lower the soil moisture sensor into the soil itself, to get more accurate readings.</p>
 <p><center>
 <img src="https://richard-shan.github.io/smathhacks/pics/featherBreadboard.jpg" alt="Breadboard circuit" width="450"/>
 </center></p>
-<p>As the ESP32 Feather V2 board was NCSSM property, we switched over to a spare Xiao Seeed ESP32S3 chip that Richard had. We chose the ESP32 architecture due to its native Wi-Fi capabilities, as we knew we would send data over a wireless network to the frontend. This involved minor changes in our code. Here is what our final circuit looks like when it is integrated into the system.</p>
+<p>As the ESP32 Feather V2 board was NCSSM property, we switched over to a spare Xiao Seeed ESP32S3 chip that Richard had. We chose the ESP32 architecture due to its native Wi-Fi capabilities, as we knew we would send data over a wireless network to the frontend. This involved minor changes in our code, discussed later. Here is what our circuit looks like when it is integrated into the system. We strove for color-coding wires properly, but had to prototype without a PCB. Alas!</p>
 <p><center>
 <img src="https://richard-shan.github.io/smathhacks/pics/integratedCircuit.jpg" alt="Final Circuit Integrated" width="600"/>
 </center></p>
-<p>We implemented a servo on the bottom to allow the soil moisture sensor to be deployed into the soil without being harmed by the initial ground impact.</p>
-<p><center></p>
-<video width="750" height="300" controls><source src="https://richard-shan.github.io/smathhacks/pics/servoMoisture.mov" type="video/mp4" /></video>
-<p></center></p>
-<p>We used the following sensors: MPU6050 gyroscope/accelerometer, SI1145 sunlight sensor, DHT11 temperature/humidity sensor, and a capacitive soil moisture sensor. The following is a picture of our final product.</p>
+<p>As discussed earlier, we now implement a servo on the bottom of ARES to allow the soil moisture sensor to be deployed into the soil without being harmed by the initial ground impact. Devpost unfortunately doesn't allow for video displays in Markdown, so a short video of the servo in action can be found <a href="https://richard-shan.github.io/smathhacks/pics/servoMoisture.mov">here</a>. The following image shows the servo in the fully extended position with the moisture sensor at its furthest point in the ground.</p>
+<p><center>
+<img src="https://richard-shan.github.io/smathhacks/pics/raisedServo.jpg" alt="Final Product" width="600"/>
+</center></p>
+<p>The following is a picture of our final product, placed on a table to emphasize the under-body spikes and moisture sensor positioning. In practice, the body of ARES sits above ground, while the spikes serve as stakes to secure ARES in place and the moisture sensor is underground to fulfill its mission of water detection.</p>
 <p><center>
 <img src="https://richard-shan.github.io/smathhacks/pics/finalProduct.jpg" alt="Final Product" width="600"/>
 </center></p>
@@ -638,6 +843,84 @@ model WeatherData {
 <p>From a systems engineering perspective, the use of JSON as a lightweight and structured data exchange format enhances system scalability and integration with web-based visualization tools. The modularity of the architecture allows for seamless expansion, enabling the incorporation of additional sensors without substantial modifications to the data processing pipeline. Furthermore, real-time data dissemination to frontend interfaces, such as interactive dashboards, enhances user engagement and decision support capabilities. This architecture enables advanced analytical techniques, including anomaly detection and machine learning-driven forecasting, by providing structured and time-synchronized datasets. The ability to efficiently collect, transmit, and visualize high-frequency sensor data has profound implications for scientific research, precision monitoring, and the development of autonomous systems.</p>
 <h2 id="future-work">Future Work</h2>
 <p>Future developments in this system can focus on enhancing data processing efficiency, expanding sensor integration, and improving real-time analytics capabilities. One key direction is the implementation of edge computing techniques to preprocess sensor data before transmission, reducing network congestion and minimizing latency in real-time applications. By incorporating onboard machine learning models, such as TinyML for anomaly detection or predictive analytics, the system could autonomously identify critical environmental changes and trigger automated responses. Additionally, improving the robustness of data transmission by implementing MQTT or WebSocket protocols could enable more efficient, low-latency communication compared to the current HTTP-based approach. Furthermore, integrating secure encryption mechanisms for JSON payloads and authentication protocols, such as OAuth 2.0, could enhance data integrity and privacy when transmitting sensitive environmental data to cloud-based platforms.</p>
+<h2 id="work-distribution">Work Distribution</h2>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Assigned To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ideation</td>
+<td>All</td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td>Richard</td>
+</tr>
+<tr>
+<td>Backend Software Development</td>
+<td>Richard</td>
+</tr>
+<tr>
+<td>Schematics</td>
+<td>Richard</td>
+</tr>
+<tr>
+<td>Sensors Analysis</td>
+<td>Richard</td>
+</tr>
+<tr>
+<td>Electrical Engineering</td>
+<td>Richard, Aaditya</td>
+</tr>
+<tr>
+<td>Networking and I2C</td>
+<td>Richard, Aaditya</td>
+</tr>
+<tr>
+<td>CAD</td>
+<td>Aaditya</td>
+</tr>
+<tr>
+<td>Moisture Servo Mount</td>
+<td>Aaditya</td>
+</tr>
+<tr>
+<td>System Integration</td>
+<td>Richard, Aaditya, Trevor</td>
+</tr>
+<tr>
+<td>Frontend Development</td>
+<td>Trevor, Josh</td>
+</tr>
+<tr>
+<td>API Development</td>
+<td>Trevor</td>
+</tr>
+<tr>
+<td>Video Script</td>
+<td>Josh</td>
+</tr>
+<tr>
+<td>Video Editing</td>
+<td>Josh</td>
+</tr>
+<tr>
+<td>Data Processing</td>
+<td>Trevor, Josh</td>
+</tr>
+<tr>
+<td>DevOps</td>
+<td>Trevor</td>
+</tr>
+</tbody>
+</table>
+<p><center>
+<img src="https://img.nmcdn.io/e1/w:600,h:399,v:1/ncssm/wp-content/uploads/2023/08/NCSSM-logo-for-news-posts.png?s=d08ceaf2" alt="NCSSM Logo" width="350"/>
+</center></p>
 
 
 
