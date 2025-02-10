@@ -245,6 +245,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#intended-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intended Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ideation" class="md-nav__link">
     <span class="md-ellipsis">
       Ideation
@@ -405,6 +414,8 @@
 <img src="https://richard-shan.github.io/smathhacks/pics/insightLander.jpg" alt="Insight Lander" width="550"/>
 </center></p>
 <p>ARES was designed to address these challenges through a scalable mesh network of remote sensor pods that can be deployed across varied Martian terrain. These pods continuously monitor temperature, humidity, seismic activity, and soil moisture, providing high-resolution environmental data to researchers. AI integration allows for real-time processing, adaptive calibration, and anomaly detection, enhancing data accuracy and reliability in Mars’ harsh conditions. The system is paired with a geospatial visualization platform, enabling users to interact with a live map of Mars, click on sensor locations, and access real-time environmental data streams. Inspired by terrestrial meteorological and seismic networks, ARES brings a planetary-scale sensing solution to Mars, laying the groundwork for future habitat planning, climate research, and exploration missions.</p>
+<h2 id="intended-usage">Intended Usage</h2>
+<p>ARES is designed to be deployed as a system of dozens or hundreds of pods on the surface of a planet, i.e. Mars. Conventional sensing robots and systems are only able to track a single location (the current location of the rover). ARES' novel approach of building a peer-to-peer mesh network allows the deployment of hundreds of sensors across a large area of Mars, that all concurrently stream data to our frontend data tracker. ARES can be dropped by a rover or dropped out of the sky into remote and unreachable locations, and is able to continuously monitor temperature, humidity, seismic, UV, IR, and moisture levels of its location. ARES is a first-of-a-kind approach to long-term scalable environmental pattern monitoring across a large and distant area.</p>
 <h2 id="ideation">Ideation</h2>
 <p>Our initial vision for ARES was centered on creating a comprehensive atmospheric and environmental monitoring system, with a strong focus on air quality analysis. Originally, we planned to incorporate sensors for volatile organic compounds (VOC), carbon dioxide (CO₂), and particulate matter (PM2.5/PM10) to better understand Mars’ atmospheric composition and potential hazards. These sensors would have allowed us to analyze dust composition, detect trace gases, and assess air quality, providing insights into both habitability and long-term climate trends on the planet. However, we faced a lot of logistical challenges considering our timeframe was only 2 days long. Our ordered sensors did not arrive in time, and forced us to adapt our approach while maintaining the core functionality of the system.</p>
 <p>To ensure that ARES remained a robust and scientifically valuable solution, we pivoted to include sunlight sensors (UV/IR) and seismic monitoring instead. This adjustment allowed us to capture even more important environmental data despite our sensors not being shipped properly. Specifically, ultraviolet and infrared radiation monitoring is particularly relevant for Martian exploration since it helps assess surface conditions, radiation exposure risks for future missions, and potential atmospheric dust interactions. The shift also streamlined our hardware integration as it allowed us to develop and assemble the entire device without having any uncertainty about parts. While our final implementation has slightly different measurements than my original plan, our central idea remains the same and our changes have only reinforced the robustness of ARES.</p>
