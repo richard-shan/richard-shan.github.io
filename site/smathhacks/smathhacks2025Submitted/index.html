@@ -227,9 +227,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#judging-guidance" class="md-nav__link">
+  <a href="#judge-and-user-guide" class="md-nav__link">
     <span class="md-ellipsis">
-      Judging Guidance
+      Judge and User Guide
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intended-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intended Usage
     </span>
   </a>
   
@@ -351,13 +360,13 @@
 
 <h1 id="ares-m-atmospheric-remote-environmental-system-for-mars">ARES-M: Atmospheric Remote Environmental System for Mars</h1>
 <p>Technical Documentation</p>
-<p>This page includes documentation for ARES-M: Atmospheric Remote Environmental System for Mars, submitted for the <strong>Hardware</strong> track at the SMathHacks 2025 hackathon. Our team members include <a href="mailto:richardmshan@gmail.com">Richard Shan</a>, <a href="mailto:sah26a@ncssm.edu">Aaditya Sah</a>, <a href="mailto:bedson26t@ncssm.edu">Trevor Bedson</a>, and <a href="mailto:chilukuri26j@ncssm.edu">Josh Chilukuri</a>. Our project, ARES, is a remote autonomous sensor suite for Mars, monitoring temperature, humidity, seismic activity, UV/IR, and soil moisture in real time to advance planetary science and environmental research. <a href="https://smathhacks-2025.devpost.com/">SMathHacks 2025</a> was hosted 2/8/2025 to 2/9/2025.</p>
+<p>This page includes documentation for ARES-M: Atmospheric Remote Environmental System for Mars, submitted for the <strong>Hardware</strong> track at the SMathHacks 2025 hackathon. Our team members include <a href="mailto:richardmshan@gmail.com">Richard Shan</a> (primary contact), <a href="mailto:sah26a@ncssm.edu">Aaditya Sah</a>, <a href="mailto:bedson26t@ncssm.edu">Trevor Bedson</a>, and <a href="mailto:chilukuri26j@ncssm.edu">Josh Chilukuri</a>. Our project, ARES, is a remote autonomous sensor suite for Mars, monitoring temperature, humidity, seismic activity, UV/IR, and soil moisture in real time to advance planetary science and environmental research. <a href="https://smathhacks-2025.devpost.com/">SMathHacks 2025</a> was hosted 2/8/2025 to 2/9/2025.</p>
 <p><strong>For a short summary, our project video, final product, and key images can be seen in the media gallery, accessible by clicking the arrows on either side of the video shown above. Note that the video is an ABRIDGED SUMMARY of the work done, and that the technical documentation is a far more comprehensive resource.</strong> Due to limited time, we also recognize that the technical documentation lacks full coverage, but it covers all important steps.</p>
 <p><center>
 <img src="https://richard-shan.github.io/pics/smathhacks.png" alt="SMathHacks Logo" width="350"/>
 </center></p>
 <p>ARES is an integrated hardware-software solution featuring a remote sensor suite to detect temperature, humidity, seismic activity, and soil moisture monitoring on Mars. The nature of ARES' scalable mesh network deployment enables real-time environmental data acquisition across a distributed sensor array on multiple varied geographic locations simultaneously. A geospatially interactive interface allows users to access and analyze live telemetry along with a visualization of recently recorded data.</p>
-<h2 id="judging-guidance">Judging Guidance</h2>
+<h2 id="judge-and-user-guide">Judge and User Guide</h2>
 <p>Although ARES is at heart, a hardware project, we recognize that it is difficult to judge hardware projects remotely and asynchronously, without access to the hardware and guarantees that it is on and running. Thus, we developed a fully integrated frontend which is publicly accessible <a href="https://mars.prorickey.xyz/">here</a>.</p>
 <p><center>
 <img src="https://richard-shan.github.io/smathhacks/pics/frontendLanding.jpg" alt="Frontend Landing Page" width="350"/>
@@ -399,6 +408,8 @@
 </table>
 <p>During the hackathon, we had time to develop one functional ARES prototype. If ARES is currently on, Perseverance's (Station 1) information and charts will be updated in live time. More realistically, ARES will not be plugged in when judging takes place (as I do have school) and Perseverance (Station 1) will be showing information from the last 10 times ARES sent back data. As we only developed one prototype, Stations 2-6 are displaying simulated data and do not reflect real world information. We simulate the other stations to demonstrate our mesh network proof-of-concept for peer-to-peer information transfer between ARES Pods.</p>
 <p>This will make a lot more sense after reading the rest of the documentation.</p>
+<h2 id="intended-usage">Intended Usage</h2>
+<p>ARES is designed to be deployed as a system of dozens or hundreds of pods on the surface of a planet, i.e. Mars. Conventional sensing robots and systems are only able to track a single location (the current location of the rover). ARES' novel approach of building a peer-to-peer mesh network allows the deployment of hundreds of sensors across a large area of Mars, that all concurrently stream data to our frontend data tracker. ARES can be dropped by a rover or dropped out of the sky into remote and unreachable locations, and is able to continuously monitor temperature, humidity, seismic, UV, IR, and moisture levels of its location. ARES is a first-of-a-kind approach to long-term scalable environmental pattern monitoring across a large and distant area.</p>
 <h2 id="inspiration">Inspiration</h2>
 <p>The idea for ARES emerged from the need for a more efficient and scalable approach to environmental monitoring on Mars. Existing planetary weather stations such as NASA’s InSight lander and Curiosity’s REMS provide valuable atmospheric and seismic data but are limited in coverage and flexibility. InSight, for example, offers stationary readings from a single location, while Curiosity’s sensors can only gather data wherever the rover happens to be. These limitations pose challenges for understanding global weather patterns, seismic activity, and potential water presence on Mars. Given the planet’s extreme conditions—dust storms, drastic temperature shifts, and geological activity—there is a critical need for a distributed, autonomous sensor system capable of continuous real-time data collection across multiple locations.</p>
 <p><center>
@@ -475,13 +486,13 @@
 </tr>
 </tbody>
 </table>
-<p>We ensure that the sensors we want to use are available. We thank Mr. D’Argenio for securing access to the basic hardware necessary for this project. </p>
+<p>We ensure that the sensors we want to use are available. We thank Mr. Michael D’Argenio from NCSSM for securing access to the hardware necessary for this project. </p>
 <table>
 <thead>
 <tr>
 <th>Metric</th>
 <th>Relevant Sensors</th>
-<th>Supported</th>
+<th>Available</th>
 </tr>
 </thead>
 <tbody>
@@ -705,9 +716,9 @@ void loop() {
   JsonArray stations = jsonDoc.createNestedArray(&quot;stations&quot;);
 
   JsonObject station = stations.createNestedObject();
-  station[&quot;id&quot;] = &quot;STATION_1&quot;;       // Replace with real ID if needed
-  station[&quot;latitude&quot;] = 0.1;           // Replace with actual GPS data if available
-  station[&quot;longitude&quot;] = 0.1;          // Replace with actual GPS data if available
+  station[&quot;id&quot;] = &quot;STATION_1&quot;;       // Changed based on which ARES Pod is programmed
+  station[&quot;latitude&quot;] = 0.1;           // Hard coded for hackathon proof of concept, varies in deployment
+  station[&quot;longitude&quot;] = 0.1;          // Hard coded for hackathon proof of concept, varies in deployment
   station[&quot;temperature&quot;] = DHT11.temperature;
   station[&quot;humidity&quot;] = DHT11.humidity;
   station[&quot;uv&quot;] = uvIndex;
@@ -841,7 +852,9 @@ model WeatherData {
 <p>On the frontend, the received JSON data can be parsed and dynamically rendered using modern web development frameworks and libraries such as React, Angular, or Vue.js. The structured JSON makes it straightforward for the frontend to extract specific sensor readings and display them in an interactive dashboard—using charts, graphs, and real-time status updates. This approach allows for scalable integration where additional sensor data or stations can be added without disrupting the data flow. </p>
 <h2 id="impact">Impact</h2>
 <p>The integration of this system into an IoT-based monitoring framework has significant implications for real-time environmental sensing, data transmission, and decision-making. By systematically acquiring data from multiple sensors—including temperature, humidity, ultraviolet (UV) radiation, infrared (IR) levels, soil moisture, and motion tracking via the MPU6050—the system ensures a comprehensive representation of environmental conditions. The collected data is structured into a standardized JSON format, optimizing interoperability between hardware and software layers. Utilizing HTTP POST requests for data transmission enables continuous and automated logging, reducing the reliance on manual intervention and enhancing data accuracy. This approach facilitates real-time analytics and predictive modeling, supporting applications in smart agriculture, climate monitoring, and industrial process optimization.</p>
-<p>From a systems engineering perspective, the use of JSON as a lightweight and structured data exchange format enhances system scalability and integration with web-based visualization tools. The modularity of the architecture allows for seamless expansion, enabling the incorporation of additional sensors without substantial modifications to the data processing pipeline. Furthermore, real-time data dissemination to frontend interfaces, such as interactive dashboards, enhances user engagement and decision support capabilities. This architecture enables advanced analytical techniques, including anomaly detection and machine learning-driven forecasting, by providing structured and time-synchronized datasets. The ability to efficiently collect, transmit, and visualize high-frequency sensor data has profound implications for scientific research, precision monitoring, and the development of autonomous systems.</p>
+<p>From a systems engineering perspective, the use of JSON as a lightweight and structured data exchange format enhances system scalability and integration with web-based visualization tools. The modularity of the architecture allows for seamless expansion, enabling the incorporation of additional sensors without substantial modifications to the data processing pipeline. Furthermore, real-time data dissemination to frontend interfaces, such as interactive dashboards, enhances user engagement and decision support capabilities. This architecture enables advanced analytical techniques, including anomaly detection and machine learning-driven forecasting, by providing structured and time-synchronized datasets. </p>
+<p>The system is designed for deployment on Mars, where real-time environmental monitoring is critical for both scientific research and mission sustainability. Mars presents a uniquely hostile environment with extreme temperature variations, low atmospheric pressure, high levels of ultraviolet and infrared radiation, and frequent dust storms. Continuous measurement of atmospheric conditions, radiation exposure, seismic activity, and soil moisture provides critical data for assessing planetary habitability, evaluating geological activity, and informing mission planning. The integration of the MPU6050 inertial measurement unit enables seismic detection, offering insights into subsurface dynamics that could inform structural stability assessments for future landing sites. Data collected from the system is structured in a lightweight JSON format, allowing for efficient transmission to orbiters, surface rovers, or Earth-based mission control centers, facilitating real-time analysis and remote decision-making.</p>
+<p>Beyond its role in environmental sensing, this system supports the development of autonomous habitat management and resource utilization for sustained human presence on Mars. The ability to monitor radiation levels and atmospheric conditions enables predictive hazard detection, which is crucial for safeguarding both robotic and human-operated systems. Soil moisture analysis contributes to in situ resource utilization strategies, particularly in the search for accessible water reserves necessary for life support, agriculture, and fuel production. The modular architecture ensures adaptability for future missions, allowing for integration with additional sensor arrays suited to evolving scientific and operational requirements. The real-time data stream enhances mission oversight by enabling remote monitoring through interactive visualization platforms, ensuring continuous situational awareness. By providing high-resolution structured environmental data, this system advances the capability of autonomous exploration and habitat sustainability, supporting both near-term scientific missions and long-term human settlement on Mars.</p>
 <h2 id="future-work">Future Work</h2>
 <p>Future developments in this system can focus on enhancing data processing efficiency, expanding sensor integration, and improving real-time analytics capabilities. One key direction is the implementation of edge computing techniques to preprocess sensor data before transmission, reducing network congestion and minimizing latency in real-time applications. By incorporating onboard machine learning models, such as TinyML for anomaly detection or predictive analytics, the system could autonomously identify critical environmental changes and trigger automated responses. Additionally, improving the robustness of data transmission by implementing MQTT or WebSocket protocols could enable more efficient, low-latency communication compared to the current HTTP-based approach. Furthermore, integrating secure encryption mechanisms for JSON payloads and authentication protocols, such as OAuth 2.0, could enhance data integrity and privacy when transmitting sensitive environmental data to cloud-based platforms.</p>
 <h2 id="work-distribution">Work Distribution</h2>
@@ -849,7 +862,7 @@ model WeatherData {
 <thead>
 <tr>
 <th>Task</th>
-<th>Assigned To</th>
+<th>Effector</th>
 </tr>
 </thead>
 <tbody>
